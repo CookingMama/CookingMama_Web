@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../components/home";
-import Login from "../components/login/Login";
+import Login from "../components/user/Login";
 import Main from "../components/main";
-import SignUp from "../components/singUp/SignUp";
+import SignUp from "../components/user/SignUp";
 
 const CustomRoute = () => {
   return (

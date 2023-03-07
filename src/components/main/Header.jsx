@@ -16,8 +16,9 @@ import {
   PhoneIcon,
   PlayCircleIcon,
 } from "@heroicons/react/20/solid";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../store/user/userSlice";
 
 const products = [
   {
@@ -64,6 +65,15 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const {data, error, status} = useSelector((state)=>state.user);
+
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
+  const onCLickLogout = () => {
+    dispatch(logout());
+    navigate("/");
+  };
 
   return (
     <header className="bg-white">
@@ -181,9 +191,9 @@ export default function Header() {
               </Link> 
             </div>
             <div className="mr-3">
-              <Link to="/login" className="text-sm font-semibold leading-6 text-gray-900 float-right">
+              <button onClick={onCLickLogout} className="text-sm font-semibold leading-6 text-gray-900 float-right">
               <BiLogOut className="float-left mt-1"/> Logout
-              </Link>
+              </button>
             </div>
           </div>
          </>
@@ -300,14 +310,13 @@ export default function Header() {
                   >
                   Hearts
                   </Link>
-                  <Link
-                  to="/signup"
+                  <button
+                  onClick={onCLickLogout}
                   className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                   Logout
-                  </Link>
+                  </button>
                 </div>
-
               </>
               ) : (
               <>
