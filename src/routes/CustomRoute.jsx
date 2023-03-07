@@ -1,6 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../components/home";
+import Login from "../components/login/Login";
 import Main from "../components/main";
+import SignUp from "../components/singUp/SignUp";
 
 const CustomRoute = () => {
   return (
@@ -8,6 +10,8 @@ const CustomRoute = () => {
       <Routes>
         <Route path="/" element={<Main />}>
           <Route path="" element={<Home />} />
+          <Route path="/signup" element={<SignUp/>} />
+          <Route path="/login" element={<Login/>} />
         </Route>
       </Routes>
     </BrowserRouter>
