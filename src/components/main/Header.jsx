@@ -14,6 +14,7 @@ import {
   PhoneIcon,
   PlayCircleIcon,
 } from "@heroicons/react/20/solid";
+import { Link } from "react-router-dom";
 
 const products = [
   {
@@ -160,9 +161,12 @@ export default function Header() {
           </a>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <Link to="/login" className="text-sm font-semibold leading-6 text-gray-900">
             Log in <span aria-hidden="true">&rarr;</span>
-          </a>
+          </Link>
+          <Link to="/signup" className="text-sm font-semibold leading-6 text-gray-900">
+            Sign Up <span aria-hidden="true">&rarr;</span>
+          </Link>
         </div>
       </nav>
       <Dialog
@@ -242,12 +246,18 @@ export default function Header() {
                 </a>
               </div>
               <div className="py-6">
-                <a
-                  href="#"
+                <Link
+                  to="/login"
                   className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Log in
-                </a>
+                </Link>
+                <Link
+                  to="/signup"
+                  className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  Sign Up
+                </Link>
               </div>
             </div>
           </div>
