@@ -1,10 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import CustomRoute from "./routes/CustomRoute";
 
 function App() {
-  return (
-    <CustomRoute></CustomRoute>
-  );
+  return <CustomRoute />;
 }
 
 export default App;
