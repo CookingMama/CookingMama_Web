@@ -1,5 +1,7 @@
 import { Fragment, useState } from "react";
 import { Dialog, Disclosure, Popover, Transition } from "@headlessui/react";
+import { BsBox2Heart, BsPeopleFill, BsPeople } from "react-icons/bs";
+import { BiLogOut, BiLogIn } from "react-icons/bi";
 import {
   ArrowPathIcon,
   Bars3Icon,
@@ -15,6 +17,7 @@ import {
   PlayCircleIcon,
 } from "@heroicons/react/20/solid";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const products = [
   {
@@ -59,6 +62,8 @@ function classNames(...classes) {
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const {data, error, status} = useSelector((state)=>state.user);
 
   return (
     <header className="bg-white">
@@ -160,14 +165,47 @@ export default function Header() {
             Company
           </a>
         </Popover.Group>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Link to="/login" className="text-sm font-semibold leading-6 text-gray-900">
-            Log in <span aria-hidden="true">&rarr;</span>
-          </Link>
-          <Link to="/signup" className="text-sm font-semibold leading-6 text-gray-900">
-            Sign Up <span aria-hidden="true">&rarr;</span>
-          </Link>
-        </div>
+
+         {/* 로그인시 MyPage, Hearts, Logout */}
+         {data.token ? (
+         <>
+          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+            <div className="mr-3">
+              <Link to="/login" className="text-sm font-semibold leading-6 text-gray-900 float-right">
+              <BsPeopleFill className="float-left mt-1"/> My Page
+              </Link>
+            </div>
+            <div className="mr-3">
+              <Link to="/login" className="text-sm font-semibold leading-6 text-gray-900 float-right">
+              <BsBox2Heart className="float-left mt-1"/> Hearts
+              </Link> 
+            </div>
+            <div className="mr-3">
+              <Link to="/login" className="text-sm font-semibold leading-6 text-gray-900 float-right">
+              <BiLogOut className="float-left mt-1"/> Logout
+              </Link>
+            </div>
+          </div>
+         </>
+         ) : (
+         <>
+          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+            <div className="mr-3">
+              <Link to="/signup" className="text-sm font-semibold leading-6 text-gray-900 float-right">
+              <BsPeople className="float-left mt-1"/> Sign Up
+              </Link>
+            </div>
+            <div className="mr-3">
+              <Link to="/login" className="text-sm font-semibold leading-6 text-gray-900 float-right">
+              <BiLogIn className="float-left mt-1"/> login
+              </Link> 
+            </div>
+          </div>
+         </>
+         )}
+        
+
+
       </nav>
       <Dialog
         as="div"
@@ -245,20 +283,51 @@ export default function Header() {
                   Company
                 </a>
               </div>
-              <div className="py-6">
-                <Link
+              
+              {/* 로그인시 MyPage, Hearts, Logout */}
+              {data.token ? (
+              <>
+                <div className="py-6">
+                  <Link
                   to="/login"
                   className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Log in
-                </Link>
-                <Link
+                  >
+                  My Page
+                  </Link>
+                  <Link
                   to="/signup"
                   className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
+                  >
+                  Hearts
+                  </Link>
+                  <Link
+                  to="/signup"
+                  className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  >
+                  Logout
+                  </Link>
+                </div>
+
+              </>
+              ) : (
+              <>
+                <div className="py-6">
+                  <Link
+                  to="/login"
+                  className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  >
+                  Log in
+                  </Link>
+                  <Link
+                  to="/signup"
+                  className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  >
                   Sign Up
-                </Link>
-              </div>
+                  </Link>
+                </div>
+              </>
+              )}
+
             </div>
           </div>
         </Dialog.Panel>
