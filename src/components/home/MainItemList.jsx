@@ -1,8 +1,12 @@
-const MainItemList = ({ id, imageSrc, imageAlt, name, color, price }) => {
+import { BsFillChatSquareHeartFill } from "react-icons/bs";
+
+const MainItemList = ({ id, name, image, adminName, price, reviewCount }) => {
   return (
-    <div key={id} className="py-2">
-      <div className="flex aspect-w-1 aspect-h-1 overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75">
-        <img src={imageSrc} alt={imageAlt} className="object-fill w-44 h-44" />
+    <div key={id} className="py-2 max-w-11">
+      <div className="w-44 h-36 bg-gray-200 group-hover:opacity-75">
+        <div className="w-full h-full">
+          <img src={image} alt={image} className="object-fill" />
+        </div>
       </div>
       <div className="flex flex-col">
         <div>
@@ -12,11 +16,14 @@ const MainItemList = ({ id, imageSrc, imageAlt, name, color, price }) => {
               {name}
             </a>
           </h3>
-          <p className="text-xs text-gray-500">{color}</p>
+          <p className="text-xs text-gray-500 overflow-hidden">{adminName}</p>
         </div>
         <p className="text-sm font-medium text-gray-900">{price}</p>
-        <div>
-          <p className="float-left text-sm text-gray-900">heart</p>
+        <div className="flex justify-between w-1/6">
+          <span>
+            <BsFillChatSquareHeartFill className="text-red-600" />
+          </span>
+          <p className="float-left text-sm text-gray-900">{reviewCount}</p>
         </div>
       </div>
     </div>

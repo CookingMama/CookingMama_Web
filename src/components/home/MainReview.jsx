@@ -1,15 +1,15 @@
 import MainBestReview from "./MainBestReview";
 import MainRecentReview from "./MainRecentReview";
 
-const MainReview = () => {
+const MainReview = ({ data }) => {
   return (
-    <div className="flex justify-center">
-      <div>
-        <MainBestReview />
-        <div>
-          <MainRecentReview />
+    <div className="">
+      {data && (
+        <div className="flex justify-between flex-wrap">
+          <MainBestReview bestReview={data.bestReview} />
+          <MainRecentReview reviews={data.reviews} />
         </div>
-      </div>
+      )}
     </div>
   );
 };
