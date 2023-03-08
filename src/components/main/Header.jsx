@@ -64,7 +64,7 @@ function classNames(...classes) {
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const {data, error, status} = useSelector((state)=>state.user);
+  const { data, error, status } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
 
@@ -82,14 +82,14 @@ export default function Header() {
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
+          <Link to="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
             <img
               className="h-8 w-auto"
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
               alt=""
             />
-          </a>
+          </Link>
         </div>
         <div className="flex lg:hidden">
           <button
@@ -175,47 +175,58 @@ export default function Header() {
             Company
           </a>
         </Popover.Group>
-
-         {/* 로그인시 MyPage, Hearts, Logout */}
-         {data.token ? (
-         <>
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <div className="mr-3">
-              <Link to="/login" className="text-sm font-semibold leading-6 text-gray-900 float-right">
-              <BsPeopleFill className="float-left mt-1"/> My Page
-              </Link>
+        {/* 로그인시 MyPage, Hearts, Logout */}
+        {data.token ? (
+          <>
+            <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+              <div className="mr-3">
+                <Link
+                  to="/login"
+                  className="text-sm font-semibold leading-6 text-gray-900 float-right"
+                >
+                  <BsPeopleFill className="float-left mt-1" /> My Page
+                </Link>
+              </div>
+              <div className="mr-3">
+                <Link
+                  to="/login"
+                  className="text-sm font-semibold leading-6 text-gray-900 float-right"
+                >
+                  <BsBox2Heart className="float-left mt-1" /> Hearts
+                </Link>
+              </div>
+              <div className="mr-3">
+                <button
+                  onClick={onCLickLogout}
+                  className="text-sm font-semibold leading-6 text-gray-900 float-right"
+                >
+                  <BiLogOut className="float-left mt-1" /> Logout
+                </button>
+              </div>
             </div>
-            <div className="mr-3">
-              <Link to="/login" className="text-sm font-semibold leading-6 text-gray-900 float-right">
-              <BsBox2Heart className="float-left mt-1"/> Hearts
-              </Link> 
+          </>
+        ) : (
+          <>
+            <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+              <div className="mr-3">
+                <Link
+                  to="/signup"
+                  className="text-sm font-semibold leading-6 text-gray-900 float-right"
+                >
+                  <BsPeople className="float-left mt-1" /> Sign Up
+                </Link>
+              </div>
+              <div className="mr-3">
+                <Link
+                  to="/login"
+                  className="text-sm font-semibold leading-6 text-gray-900 float-right"
+                >
+                  <BiLogIn className="float-left mt-1" /> login
+                </Link>
+              </div>
             </div>
-            <div className="mr-3">
-              <button onClick={onCLickLogout} className="text-sm font-semibold leading-6 text-gray-900 float-right">
-              <BiLogOut className="float-left mt-1"/> Logout
-              </button>
-            </div>
-          </div>
-         </>
-         ) : (
-         <>
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <div className="mr-3">
-              <Link to="/signup" className="text-sm font-semibold leading-6 text-gray-900 float-right">
-              <BsPeople className="float-left mt-1"/> Sign Up
-              </Link>
-            </div>
-            <div className="mr-3">
-              <Link to="/login" className="text-sm font-semibold leading-6 text-gray-900 float-right">
-              <BiLogIn className="float-left mt-1"/> login
-              </Link> 
-            </div>
-          </div>
-         </>
-         )}
-        
-
-
+          </>
+        )}
       </nav>
       <Dialog
         as="div"
@@ -293,50 +304,49 @@ export default function Header() {
                   Company
                 </a>
               </div>
-              
+
               {/* 로그인시 MyPage, Hearts, Logout */}
               {data.token ? (
-              <>
-                <div className="py-6">
-                  <Link
-                  to="/login"
-                  className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                  >
-                  My Page
-                  </Link>
-                  <Link
-                  to="/signup"
-                  className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                  >
-                  Hearts
-                  </Link>
-                  <button
-                  onClick={onCLickLogout}
-                  className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                  >
-                  Logout
-                  </button>
-                </div>
-              </>
+                <>
+                  <div className="py-6">
+                    <Link
+                      to="/login"
+                      className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    >
+                      My Page
+                    </Link>
+                    <Link
+                      to="/signup"
+                      className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    >
+                      Hearts
+                    </Link>
+                    <button
+                      onClick={onCLickLogout}
+                      className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                </>
               ) : (
-              <>
-                <div className="py-6">
-                  <Link
-                  to="/login"
-                  className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                  >
-                  Log in
-                  </Link>
-                  <Link
-                  to="/signup"
-                  className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                  >
-                  Sign Up
-                  </Link>
-                </div>
-              </>
+                <>
+                  <div className="py-6">
+                    <Link
+                      to="/login"
+                      className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    >
+                      Log in
+                    </Link>
+                    <Link
+                      to="/signup"
+                      className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    >
+                      Sign Up
+                    </Link>
+                  </div>
+                </>
               )}
-
             </div>
           </div>
         </Dialog.Panel>
