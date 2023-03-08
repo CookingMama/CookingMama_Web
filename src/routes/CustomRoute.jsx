@@ -3,6 +3,7 @@ import Home from "../components/home";
 import Login from "../components/user/Login";
 import Main from "../components/main";
 import SignUp from "../components/user/SignUp";
+import Hearts from "../components/hearts/\bHearts";
 
 const CustomRoute = () => {
   return (
@@ -12,6 +13,7 @@ const CustomRoute = () => {
           <Route path="" element={<Home />} />
           <Route path="/signup" element={<SignUp/>} />
           <Route path="/login" element={<Login/>} />
+          <Route path="/hearts" element={<Hearts/>} />
         </Route>
       </Routes>
     </BrowserRouter>

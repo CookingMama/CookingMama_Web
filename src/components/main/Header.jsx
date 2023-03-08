@@ -186,7 +186,7 @@ export default function Header() {
               </Link>
             </div>
             <div className="mr-3">
-              <Link to="/login" className="text-sm font-semibold leading-6 text-gray-900 float-right">
+              <Link to="/hearts" className="text-sm font-semibold leading-6 text-gray-900 float-right">
               <BsBox2Heart className="float-left mt-1"/> Hearts
               </Link> 
             </div>
@@ -305,7 +305,7 @@ export default function Header() {
                   My Page
                   </Link>
                   <Link
-                  to="/signup"
+                  to="/hearts"
                   className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                   Hearts
