@@ -1,28 +1,39 @@
-const data = {
-  id: 1,
-  name: "Basic Tee",
-  content: "매우 좋은 상품입니다 꼭 한번 ...",
-  grade: 4.7,
-  href: "#",
-  imageSrc:
-    "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-  imageAlt: "Front of men's Basic Tee in black.",
-};
+import { useSelector } from "react-redux";
+import { BsStarFill, BsStar } from "react-icons/bs";
 
-const MainBestReview = () => {
+const MainBestReview = ({ bestReview }) => {
+  const gradeIcons = (grade) => {
+    const array = [];
+    for (let i = 1; i <= 5; i++) {
+      if (i <= grade) array.push(<BsStarFill />);
+      else array.push(<BsStar />);
+    }
+    return array;
+  };
+
   return (
-    <div className="flex">
-      <div className="">
-        <img
-          src={data.imageSrc}
-          alt={data.imageAlt}
-          className="object-fill w-32 h-40"
-        />
-      </div>
-      <div className="flex flex-col">
-        <div>{data.name}</div>
-        <div className="mb-5">{data.grade}</div>
-        <div>{data.content}</div>
+    <div className="w-1/2 min-w-100 ">
+      <div className="text-2xl font-bold mb-5">Best Review</div>
+      <div className="flex flex-wrap justify-center">
+        <div className="mx-5 w-5/12 h-96 min-w-12 bg-gray-200 group-hover:opacity-75 rounded">
+          <img
+            src={bestReview.image}
+            alt={bestReview.image}
+            className="object-fill "
+          />
+        </div>
+        <div className="flex flex-col w-5/12 min-w-12">
+          <div className="text-2xl font-bold mb-5">{bestReview.itemName}</div>
+          <div className="flex">
+            {gradeIcons(bestReview.grade).map((el, idx) => (
+              <div key={idx} className="text-amber-500 text-xl">
+                {el}
+              </div>
+            ))}
+          </div>
+          <div className="flex mb-5">{bestReview.userName}</div>
+          <div className="text-left text-lg">{bestReview.content}</div>
+        </div>
       </div>
     </div>
   );

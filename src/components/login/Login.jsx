@@ -13,20 +13,20 @@ export default function Login() {
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
-    setUser({...user, [name]: value});
+    setUser({ ...user, [name]: value });
   };
 
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
- 
+
   const onSubmit = async (e) => {
     e.preventDefault();
     dispatch(login(user));
   };
 
   useEffect(() => {
-    if(status === "successed" && data.token) navigate("/");
+    if (status === "successed" && data.token) navigate("/");
   }, [status, data]);
 
   return (

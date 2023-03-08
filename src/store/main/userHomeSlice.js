@@ -23,7 +23,6 @@ const userHomeSlice = createSlice({
       })
       .addCase(getUserHome.fulfilled, (state, action) => {
         state.status = "successed";
-        console.log(action);
         state.data = action.payload;
       })
       .addCase(getUserHome.rejected, (state, action) => {
