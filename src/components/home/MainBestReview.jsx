@@ -14,12 +14,12 @@ const MainBestReview = ({ bestReview }) => {
   return (
     <div className="w-1/2 min-w-100 ">
       <div className="text-2xl font-bold mb-5">Best Review</div>
-      <div className="flex flex-wrap justify-center">
-        <div className="mx-5 w-5/12 h-96 min-w-12 bg-gray-200 group-hover:opacity-75 rounded">
+      <div className="flex flex-wrap justify-center pb-28">
+        <div className="mx-5 w-5/12 min-w-12 bg-gray-200 group-hover:opacity-75 rounded">
           <img
             src={bestReview.image}
             alt={bestReview.image}
-            className="object-fill "
+            className="object-fill"
           />
         </div>
         <div className="flex flex-col w-5/12 min-w-12">

@@ -39,17 +39,24 @@ const Home = () => {
         </div>
       </div>
       <div className="flex justify-center text-center">
-        {data.bestReview && data.reviews && (
-          <div
-            id="homeReview"
-            className="w-10/12 min-w-12 rounded-xl bg-sky-200 "
-          >
+        {" "}
+        <div
+          id="homeReview"
+          className="w-10/12 min-w-12 rounded-xl bg-sky-200 "
+        >
+          {data.bestReview !== undefined && data.reviews !== null ? (
+            <>
+              <div className="text-4xl my-5 font-bold tracking-tight text-gray-900">
+                Reviews
+              </div>
+              <MainReview data={data} />
+            </>
+          ) : (
             <div className="text-4xl my-5 font-bold tracking-tight text-gray-900">
-              Reviews
+              등록 된 리뷰가 없습니다!!!
             </div>
-            <MainReview data={data} />
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );

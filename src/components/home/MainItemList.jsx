@@ -1,11 +1,22 @@
 import { BsFillChatSquareHeartFill } from "react-icons/bs";
+import { useNavigate } from "react-router";
 
 const MainItemList = ({ id, name, image, adminName, price, reviewCount }) => {
+  const navigate = useNavigate();
+
+  const toItemDetail = () => {
+    navigate(`/items/${id}`);
+  };
+
   return (
-    <div key={id} className="py-2 max-w-11">
+    <div
+      key={id}
+      onClick={toItemDetail}
+      className="py-2 max-w-11 hover:cursor-pointer"
+    >
       <div className="w-44 h-36 bg-gray-200 group-hover:opacity-75">
         <div className="w-full h-full">
-          <img src={image} alt={image} className="object-fill" />
+          <img src={image} alt={image} className="object-fill w-full h-full" />
         </div>
       </div>
       <div className="flex flex-col">

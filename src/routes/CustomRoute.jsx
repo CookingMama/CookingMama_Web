@@ -3,6 +3,7 @@ import Home from "../components/home";
 import Login from "../components/user/Login";
 import Main from "../components/main";
 import SignUp from "../components/user/SignUp";
+import ItemDetail from "../components/item/ItemDetail";
 
 const CustomRoute = () => {
   return (
@@ -10,8 +11,9 @@ const CustomRoute = () => {
       <Routes>
         <Route path="/" element={<Main />}>
           <Route path="" element={<Home />} />
-          <Route path="/signup" element={<SignUp/>} />
-          <Route path="/login" element={<Login/>} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/items/:id" element={<ItemDetail />} />
         </Route>
       </Routes>
     </BrowserRouter>
