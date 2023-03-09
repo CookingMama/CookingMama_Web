@@ -36,7 +36,7 @@ const Coupons = () => {
           <div className="bg-sky-200 float-left rounded-lg white w-3/12 h-100">
             <div className="flex justify-center">
               <Link
-                to={"/mypage"}
+                to={"/editinfo"}
                 className="mt-10 rounded-t-2xl rounded-b-2xl  p-16 py-2 text-black bg-gray-400 sm:text-sm"
               >
                 회원정보 수정
@@ -44,7 +44,7 @@ const Coupons = () => {
             </div>
             <div className="flex justify-center">
               <Link
-                to={"/orders"}
+                to={"/orderhistory"}
                 className="mt-5 rounded-t-2xl rounded-b-2xl  p-16 py-2 text-black bg-gray-400 sm:text-sm"
               >
                 주문내역조회
