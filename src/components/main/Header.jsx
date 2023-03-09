@@ -181,7 +181,7 @@ export default function Header() {
             <div className="hidden lg:flex lg:flex-1 lg:justify-end">
               <div className="mr-3">
                 <Link
-                  to="/login"
+                  to="/mypage"
                   className="text-sm font-semibold leading-6 text-gray-900 float-right"
                 >
                   <BsPeopleFill className="float-left mt-1" /> My Page
@@ -189,7 +189,7 @@ export default function Header() {
               </div>
               <div className="mr-3">
                 <Link
-                  to="/login"
+                  to="/hearts"
                   className="text-sm font-semibold leading-6 text-gray-900 float-right"
                 >
                   <BsBox2Heart className="float-left mt-1" /> Hearts
@@ -310,13 +310,13 @@ export default function Header() {
                 <>
                   <div className="py-6">
                     <Link
-                      to="/login"
+                      to="/mypage"
                       className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                     >
                       My Page
                     </Link>
                     <Link
-                      to="/signup"
+                      to="/hearts"
                       className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                     >
                       Hearts
