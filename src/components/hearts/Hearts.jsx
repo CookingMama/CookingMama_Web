@@ -1,12 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import {
-  addCount,
-  getHearts,
-  increment,
-  incremented,
-} from "../../store/hearts/heartsSlice";
+import { getHearts } from "../../store/hearts/heartsSlice";
 import { AiOutlinePlusSquare, AiOutlineMinusSquare } from "react-icons/ai";
 
 const Hearts = () => {
@@ -60,9 +55,7 @@ const Hearts = () => {
                             원
                           </td>
                           <td className="pl-5 pr-5 pt-5 pb-5">
-                            <button
-                              className="mr-1 relative"
-                            >
+                            <button className="mr-1 relative">
                               <AiOutlinePlusSquare />
                             </button>
                             {el.count}
