@@ -4,7 +4,7 @@ import Login from "../components/user/Login";
 import Main from "../components/main";
 import SignUp from "../components/user/SignUp";
 import ItemDetail from "../components/item/ItemDetail";
-import Hearts from "../components/hearts/\bHearts";
+import Hearts from "../components/hearts/Hearts";
 import Coupons from "../components/coupons/Coupons";
 import MyPage from "../components/myPage/MyPage";
 import EditInfo from "../components/editInfo/EditInfo";
