@@ -1,8 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
+import couponsSlice from "./coupons/couponsSlice";
 import heartsSlice from "./hearts/heartsSlice";
-
-import userHomeSlice from "./items/userHomeSlice";
-import itemSlice from "./items/userHomeSlice";
+import userHomeSlice from "./main/userHomeSlice";
 import userSlice from "./user/userSlice";
 
 export default configureStore({
@@ -10,5 +9,6 @@ export default configureStore({
     userHome: userHomeSlice,
     user: userSlice,
     hearts: heartsSlice,
-  }
+    coupons: couponsSlice,
+  },
 });

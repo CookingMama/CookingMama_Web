@@ -175,34 +175,34 @@ export default function Header() {
             Company
           </a>
         </Popover.Group>
-         {/* 로그인시 MyPage, Hearts, Logout */}
-         {data.token ? (
-         <>
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <div className="mr-3">
-              <Link to="/login" className="text-sm font-semibold leading-6 text-gray-900 float-right">
-              <BsPeopleFill className="float-left mt-1"/> My Page
-              </Link>
-            </div>
-            <div className="mr-3">
-              <Link to="/hearts" className="text-sm font-semibold leading-6 text-gray-900 float-right">
-              <BsBox2Heart className="float-left mt-1"/> Hearts
-              </Link> 
-            </div>
-            <div className="mr-3">
-              <button onClick={onCLickLogout} className="text-sm font-semibold leading-6 text-gray-900 float-right">
-              <BiLogOut className="float-left mt-1"/> Logout
-              </button>
-            </div>
-          </div>
-         </>
-         ) : (
-         <>
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <div className="mr-3">
-              <Link to="/signup" className="text-sm font-semibold leading-6 text-gray-900 float-right">
-              <BsPeople className="float-left mt-1"/> Sign Up
-              </Link>
+        {/* 로그인시 MyPage, Hearts, Logout */}
+        {data.token ? (
+          <>
+            <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+              <div className="mr-3">
+                <Link
+                  to="/mypage"
+                  className="text-sm font-semibold leading-6 text-gray-900 float-right"
+                >
+                  <BsPeopleFill className="float-left mt-1" /> My Page
+                </Link>
+              </div>
+              <div className="mr-3">
+                <Link
+                  to="/hearts"
+                  className="text-sm font-semibold leading-6 text-gray-900 float-right"
+                >
+                  <BsBox2Heart className="float-left mt-1" /> Hearts
+                </Link>
+              </div>
+              <div className="mr-3">
+                <button
+                  onClick={onCLickLogout}
+                  className="text-sm font-semibold leading-6 text-gray-900 float-right"
+                >
+                  <BiLogOut className="float-left mt-1" /> Logout
+                </button>
+              </div>
             </div>
           </>
         ) : (
@@ -307,28 +307,28 @@ export default function Header() {
 
               {/* 로그인시 MyPage, Hearts, Logout */}
               {data.token ? (
-              <>
-                <div className="py-6">
-                  <Link
-                  to="/login"
-                  className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                  >
-                  My Page
-                  </Link>
-                  <Link
-                  to="/hearts"
-                  className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                  >
-                  Hearts
-                  </Link>
-                  <button
-                  onClick={onCLickLogout}
-                  className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                  >
-                  Logout
-                  </button>
-                </div>
-              </>
+                <>
+                  <div className="py-6">
+                    <Link
+                      to="/mypage"
+                      className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    >
+                      My Page
+                    </Link>
+                    <Link
+                      to="/hearts"
+                      className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    >
+                      Hearts
+                    </Link>
+                    <button
+                      onClick={onCLickLogout}
+                      className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                </>
               ) : (
                 <>
                   <div className="py-6">
