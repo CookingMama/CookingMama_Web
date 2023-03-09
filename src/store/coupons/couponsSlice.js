@@ -27,7 +27,7 @@ const couponsSlice = createSlice({
   initialState,
   extraReducers(builder) {
     builder
-      .addCase(getCoupons.pending, (state, actionj) => {
+      .addCase(getCoupons.pending, (state, action) => {
         state.status = "loading";
       })
       .addCase(getCoupons.fulfilled, (state, action) => {

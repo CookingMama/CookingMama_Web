@@ -6,6 +6,7 @@ import SignUp from "../components/user/SignUp";
 import Hearts from "../components/hearts/\bHearts";
 import Coupons from "../components/coupons/Coupons";
 import MyPage from "../components/myPage/MyPage";
+import EditInfo from "../components/editInfo/EditInfo";
 
 const CustomRoute = () => {
   return (
@@ -13,11 +14,12 @@ const CustomRoute = () => {
       <Routes>
         <Route path="/" element={<Main />}>
           <Route path="" element={<Home />} />
-          <Route path="/signup" element={<SignUp/>} />
-          <Route path="/login" element={<Login/>} />
-          <Route path="/hearts" element={<Hearts/>} />
-          <Route path="/mypage" element={<MyPage/>} />
-          <Route path="/coupons" element={<Coupons/>} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/hearts" element={<Hearts />} />
+          <Route path="/mypage" element={<MyPage />} />
+          <Route path="/coupons" element={<Coupons />} />
+          <Route path="/editinfo" element={<EditInfo />} />
         </Route>
       </Routes>
     </BrowserRouter>
