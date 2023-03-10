@@ -12,18 +12,17 @@ export const login = createAsyncThunk("/user/login", async (user) => {
   return response.data;
 });
 
-
-
 const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
     logout: (state) => {
-        state.data = initialState.data;
-        state.status = initialState.status;
-        state.error = initialState.error;
-        localStorage.clear();
-    }
+      state.data = initialState.data;
+      state.status = initialState.status;
+      state.error = initialState.error;
+      localStorage.clear();
+      alert("정상적으로 로그아웃 되었습니다.");
+    },
   },
   extraReducers(builder) {
     builder
@@ -42,4 +41,4 @@ const userSlice = createSlice({
   },
 });
 export default userSlice.reducer;
-export const {logout} = userSlice.actions;
+export const { logout } = userSlice.actions;
