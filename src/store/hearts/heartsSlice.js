@@ -32,6 +32,14 @@ export const deleteItem = createAsyncThunk(
   }
 );
 
+export const postHearts = createAsyncThunk(
+  "/user/postHearts",
+  async (inputList) => {
+    const response = await api("POST", "/user/hearts", inputList);
+    return response.data;
+  }
+);
+
 const heartsSlice = createSlice({
   name: "hearts",
   initialState,
@@ -67,6 +75,16 @@ const heartsSlice = createSlice({
       .addCase(deleteItem.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
+      })
+      .addCase(postHearts.pending, (state, action) => {
+        state.status = "loading";
+      })
+      .addCase(postHearts.fulfilled, (state, action) => {
+        state.status = "successed";
+      })
+      .addCase(postHearts.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;  
       });
   },
 });

@@ -2,21 +2,21 @@ import { useEffect, useState } from "react";
 import { RadioGroup } from "@headlessui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { getItemDetail } from "../../store/item/itemDetailSlice";
-import { useLocation } from "react-router";
-import { BsStarFill, BsStar } from "react-icons/bs";
+import { useLocation, useNavigate, useParams } from "react-router";
+import { BsStarFill, BsStar, BsMusicNoteBeamed } from "react-icons/bs";
 import ItemDetailReview from "./ItemDetailReview";
+import ItemCheck from "./ItemCheck";
+import { postHearts } from "../../store/hearts/heartsSlice";
 
 export default function ItemDetail() {
-  const [input, setInput] = useState({});
-  const location = useLocation();
+  const [inputList, setInputList] = useState([]);
+  const param = useParams();
   const { data } = useSelector((state) => state.itemDetail);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const itemId = Number(
-      location.pathname.substring(7, location.pathname.length)
-    );
-    dispatch(getItemDetail(itemId));
+    dispatch(getItemDetail(param.id));
   }, []);
 
   const gradeIcons = (grade) => {
@@ -26,6 +26,30 @@ export default function ItemDetail() {
       else array.push(<BsStar />);
     }
     return array;
+  };
+
+  const optionChange = (e) => {
+    const input = { option: e.target.value, count: 1, itemId: param.id };
+    if (inputList.some((e) => e.option === input.option)) {
+      alert("이미 선택하신 옵션입니다.");
+      return;
+    }
+    setInputList([...inputList, input]);
+  };
+
+  const onSubmit = () => {
+    if (localStorage.getItem("token")) {
+      dispatch(postHearts(inputList));
+      if (
+        window.confirm(
+          "장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?"
+        )
+      ) {
+        navigate("/hearts");
+      }
+    } else {
+      navigate("/login");
+    }
   };
 
   return (
@@ -107,13 +131,17 @@ export default function ItemDetail() {
               </div>
             </div>
 
-            <form className="mt-10">
+            <form className="mt-10" onSubmit={onSubmit}>
               <div className="mt-10">
                 <div className="flex items-center justify-between">
                   <h3 className="text-sm font-medium text-gray-900">옵션</h3>
                 </div>
                 <div className="h-12">
-                  <select className="w-full h-full mt-2 border border-gray-400 rounded">
+                  <select
+                    className="w-full h-full mt-2 border border-gray-400 rounded"
+                    onChange={optionChange}
+                    // value={input.option}
+                  >
                     <option value={""}>
                       ---------------- 옵션을 선택해주세요. ----------------
                     </option>
@@ -130,14 +158,20 @@ export default function ItemDetail() {
                 </div>
               </div>
               {/* 주문 확인 부분 */}
-              {/* 
-              <div>
-                <ItemCheck />
-              </div> */}
+
+              {inputList && (
+                <div>
+                  <ItemCheck
+                    inputList={inputList}
+                    setInputList={setInputList}
+                    price={data.itemPrice}
+                  />
+                </div>
+              )}
 
               <button
                 type="submit"
-                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               >
                 장바구니에 담기
               </button>
