@@ -81,7 +81,7 @@ export default function Login() {
                 </button>
                 <Link
                   to={"/signup"}
-                  className="flex justify-center mr-9 w-32 relative block appearance-none rounded-t-2xl rounded-b-2xl border px-3 py-2 text-black bg-gray-400 sm:text-sm"
+                  className="flex justify-center mr-9 w-32 relative appearance-none rounded-t-2xl rounded-b-2xl border px-3 py-2 text-black bg-gray-400 sm:text-sm"
                 >
                   회원가입
                 </Link>
