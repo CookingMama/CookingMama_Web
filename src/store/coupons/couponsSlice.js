@@ -18,6 +18,7 @@ export const addCoupons = createAsyncThunk(
   async (couponCode) => {
     const response = await api("POST", "user/coupons", couponCode);
     alert(response.data);
+    window.location.reload();
     return response.data;
   }
 );
@@ -32,7 +33,6 @@ const couponsSlice = createSlice({
       })
       .addCase(getCoupons.fulfilled, (state, action) => {
         state.status = "successed";
-        // state.data = [...state.data, ...action.payload.friendTodos];
         state.data = action.payload;
       })
       .addCase(getCoupons.rejected, (state, action) => {

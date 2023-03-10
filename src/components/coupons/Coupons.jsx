@@ -31,13 +31,21 @@ const Coupons = () => {
   return (
     <>
       <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-sky-200">
-        <div className="bg-white p-5 rounded-t-md rounded-b-md m-1.5 w-full">
+        <div className="bg-white w-11/12 p-3 rounded-t-md rounded-b-md">
           <h1 className="flex justify-center text-4xl mt-0 mb-5">쿠폰 내역</h1>
-          <div className="bg-sky-200 float-left rounded-lg white w-3/12 h-100">
+          <div className="bg-sky-200 float-left rounded-lg white w-3/12 pb-10">
+            <div className="flex justify-center">
+              <Link
+                to={"/mypage"}
+                className="mt-10 rounded-t-2xl rounded-b-2xl  p-20 py-2 text-black bg-gray-400 sm:text-sm"
+              >
+                내 정보
+              </Link>
+            </div>
             <div className="flex justify-center">
               <Link
                 to={"/editinfo"}
-                className="mt-10 rounded-t-2xl rounded-b-2xl  p-16 py-2 text-black bg-gray-400 sm:text-sm"
+                className="mt-5 rounded-t-2xl rounded-b-2xl  p-16 py-2 text-black bg-gray-400 sm:text-sm"
               >
                 회원정보 수정
               </Link>
@@ -47,7 +55,7 @@ const Coupons = () => {
                 to={"/orderhistory"}
                 className="mt-5 rounded-t-2xl rounded-b-2xl  p-16 py-2 text-black bg-gray-400 sm:text-sm"
               >
-                주문내역조회
+                주문내역 조회
               </Link>
             </div>
             <div className="flex justify-center">
@@ -59,31 +67,30 @@ const Coupons = () => {
               </Link>
             </div>
           </div>
-          <div className="p-5 bg-sky-200 pt-1 rounded-t-md rounded-b-md m-1.5 float-right w-8/12 h-100">
-            <form className="mt-8 space-y-6" method="POST" onSubmit={onSubmit}>
-              <div className="bg-sky-200 p-6 rounded-t-md rounded-b-md m-1.5 ">
+          <div className="p-5 bg-sky-200 rounded-md float-right w-8/12">
+            <form className="space-y-6" method="POST" onSubmit={onSubmit}>
+              <div className="bg-sky-200 rounded-md ">
                 <input type="hidden" name="remember" defaultValue="true" />
                 <div className="rounded-md w-auto">
-                  <div className="h-5/12 bg-white p-2 rounded-lg">
+                  <div className="flex justify-center bg-white p-2 rounded-lg">
                     <table>
-                      <thead className="border-b-2 border-b-black whitespace-nowrap text-lg">
-                        <tr>전체 쿠폰 내역</tr>
+                      <thead className="w-full border-b-2 border-b-black whitespace-nowrap text-lg">
                         <tr>
-                          <th>쿠폰명</th>
-                          <th>할인율</th>
-                          <th>사용유무</th>
+                          <th className="ml-10 mr-10">쿠폰명</th>
+                          <th className="ml-10 mr-10">할인율</th>
+                          <th className="ml-10 mr-10">사용유무</th>
                         </tr>
                       </thead>
                       <tbody className="whitespace-nowrap text-center">
                         {data.map((el) => (
                           <tr key={el.id}>
-                            <td className="pl-5 pr-5 pt-10 pb-10">
+                            <td className="pl-5 pr-5 pt-5 pb-5">
                               {el.couponName}
                             </td>
-                            <td className="pl-5 pr-5 pt-5 pb-5">
+                            <td className="pl-5 pr-5">
                               {el.couponPercentage}
                             </td>
-                            <td className="pl-5 pr-5 pt-5 pb-5">
+                            <td className="pl-5 pr-5">
                               {el.status === 0 ? "미사용" : "사용 완료"}
                             </td>
                           </tr>
