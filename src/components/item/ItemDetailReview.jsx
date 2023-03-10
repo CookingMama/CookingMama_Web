@@ -33,8 +33,8 @@ const ItemDetailReview = (reviews) => {
           </div>
           <div className="flex flex-col justify-center text-center mr-10">
             <div>
-              <p>{el.createdAt.substring(0, 10)}</p>
-              <p>{el.createdAt.substring(11, 19)}</p>
+              <p>{el.createdAt.split("T")[0]}</p>
+              <p>{el.createdAt.split("T")[1].split(".")[0]}</p>
             </div>
           </div>
         </div>
