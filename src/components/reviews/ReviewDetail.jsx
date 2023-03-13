@@ -83,8 +83,8 @@ export default function ReviewDetail() {
                     </div>
                     <div className="flex">
                       <div className=" flex items-center mr-7">
-                        {data.createdAt.split("T")[0]}{" "}
-                        {data.createdAt.split("T")[1].split(".")[0]}
+                        {data?.createdAt?.split("T")[0]}
+                        {data?.createdAt?.split("T")[1].split(".")[0]}
                       </div>
                       <div
                         onClick={() => dispatch(setFalse())}
