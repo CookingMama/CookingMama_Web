@@ -63,6 +63,7 @@ export default function ReviewDetail() {
                     <div className="flex pt-5 mt-3 h-1/5 text-center sm:mt-0 sm:ml-4 sm:text-left">
                       <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10"></div>
                       <div className="ml-6">
+                        <div className="text-xl font-bold">{data.itemName}</div>
                         <div
                           as="h3"
                           className="text-base font-semibold leading-6 text-gray-900"
@@ -83,7 +84,7 @@ export default function ReviewDetail() {
                     </div>
                     <div className="flex">
                       <div className=" flex items-center mr-7">
-                        {data?.createdAt?.split("T")[0]}
+                        {data?.createdAt?.split("T")[0]}{" "}
                         {data?.createdAt?.split("T")[1].split(".")[0]}
                       </div>
                       <div
@@ -96,7 +97,7 @@ export default function ReviewDetail() {
                   </div>
                 </div>
                 <div className="">
-                  <div className="mt-2 flex justify-center text-left h-3/5">
+                  <div className="mt-2 px-24 text-left h-3/5">
                     <div className="text-xl w-4/5">{data.content}</div>
                   </div>
                 </div>
