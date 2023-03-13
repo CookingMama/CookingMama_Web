@@ -27,6 +27,7 @@ export default function Login() {
 
   useEffect(() => {
     if (status === "successed" && data.token) navigate("/");
+    if (status === "failed") alert("이메일 또는 비밀번호가 잘못되었습니다.");
   }, [status, data]);
 
   return (

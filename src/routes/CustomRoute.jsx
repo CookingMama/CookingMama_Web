@@ -8,6 +8,7 @@ import Hearts from "../components/hearts/Hearts";
 import Coupons from "../components/coupons/Coupons";
 import MyPage from "../components/myPage/MyPage";
 import EditInfo from "../components/editInfo/EditInfo";
+import OrderHistory from "../components/orderHistory/OrderHistory";
 
 const CustomRoute = () => {
   return (
@@ -22,6 +23,7 @@ const CustomRoute = () => {
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/coupons" element={<Coupons />} />
           <Route path="/editinfo" element={<EditInfo />} />
+          <Route path="/orderhistory" element={<OrderHistory />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -6,6 +6,7 @@ import heartsSlice from "./hearts/heartsSlice";
 import userHomeSlice from "./main/userHomeSlice";
 import userSlice from "./user/userSlice";
 import reviewSlice from "./reviews/reviewSlice";
+import orderHistorySlice from "./orderHistory/orderHistorySlice";
 
 export default configureStore({
   reducer: {
@@ -16,5 +17,6 @@ export default configureStore({
     coupons: couponsSlice,
     editInfo: editInfoSlice,
     review: reviewSlice,
+    orderHistory: orderHistorySlice,
   },
 });
