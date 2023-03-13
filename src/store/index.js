@@ -7,6 +7,7 @@ import userHomeSlice from "./main/userHomeSlice";
 import userSlice from "./user/userSlice";
 import reviewSlice from "./reviews/reviewSlice";
 import orderHistorySlice from "./orderHistory/orderHistorySlice";
+import itemListCategorySlice from "./item/itemListCategorySlice";
 
 export default configureStore({
   reducer: {
@@ -18,5 +19,6 @@ export default configureStore({
     editInfo: editInfoSlice,
     review: reviewSlice,
     orderHistory: orderHistorySlice,
+    itemListByCategory: itemListCategorySlice,
   },
 });
