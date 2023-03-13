@@ -6,6 +6,8 @@ const MainRecentReview = ({ reviews }) => {
       {reviews?.slice(0, 3).map((el, idx) => (
         <MainRecentReviewList
           key={idx}
+          myItemId={el.itemId}
+          myUserId={el.userId}
           itemName={el.itemName}
           userName={el.userName}
           grade={el.grade}
