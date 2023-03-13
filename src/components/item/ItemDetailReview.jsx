@@ -1,18 +1,34 @@
 import { BsStarFill, BsStar } from "react-icons/bs";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setItemIds,
+  setTrue,
+  setUserIds,
+} from "../../store/reviews/reviewSlice";
+import ReviewDetail from "../reviews/ReviewDetail";
 
 const ItemDetailReview = (reviews) => {
+  const { itemId, userId } = useSelector((state) => state.review);
+  const dispatch = useDispatch();
   const gradeIcons = (grade) => {
     const array = [];
     for (let i = 1; i <= 5; i++) {
-      if (i <= grade) array.push(<BsStarFill />);
-      else array.push(<BsStar />);
+      i <= grade ? array.push(<BsStarFill />) : array.push(<BsStar />);
     }
     return array;
   };
+
+  const setData = (itemId, userId) => {
+    dispatch(setItemIds(itemId));
+    dispatch(setUserIds(userId));
+    dispatch(setTrue());
+  };
+
   return (
     <div className="border border-t-slate-500 w-10/12 pt-4">
       {reviews?.reviews?.map((el, idx) => (
         <div key={idx} className="flex justify-between">
+          {el.itemId === itemId && el.userId === userId && <ReviewDetail />}
           <div className="flex">
             <div>
               <img src={el.image} className="w-36 h-36" />
@@ -26,7 +42,10 @@ const ItemDetailReview = (reviews) => {
                   </div>
                 ))}
               </div>
-              <p className="hover:text-gray-400 border hover:border-b-gray-500">
+              <p
+                onClick={() => setData(el.itemId, el.userId)}
+                className="hover:text-gray-400 border hover:border-b-gray-500 hover:cursor-pointer"
+              >
                 {el.content}
               </p>
             </div>
