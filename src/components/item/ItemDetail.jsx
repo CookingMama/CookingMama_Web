@@ -7,6 +7,7 @@ import { BsStarFill, BsStar, BsMusicNoteBeamed } from "react-icons/bs";
 import ItemDetailReview from "./ItemDetailReview";
 import ItemCheck from "./ItemCheck";
 import { postHearts } from "../../store/hearts/heartsSlice";
+import { Link } from "react-router-dom";
 
 export default function ItemDetail() {
   const [inputList, setInputList] = useState([]);
@@ -59,19 +60,12 @@ export default function ItemDetail() {
           >
             <li>
               <div className="flex items-center">
-                <a href="" className="mr-2 text-sm font-medium text-gray-900">
-                  category
-                </a>
-                <div
-                  width={16}
-                  height={20}
-                  viewBox="0 0 16 20"
-                  fill="currentColor"
-                  aria-hidden="true"
-                  className="h-5 w-4 text-gray-300"
+                <Link
+                  to={`/items/${data.categoryId}?category=${data.categoryName}`}
+                  className="mr-2 text-sm font-medium text-gray-900"
                 >
-                  <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
-                </div>
+                  {data.categoryName} &gt;
+                </Link>
               </div>
             </li>
             <li className="text-sm">

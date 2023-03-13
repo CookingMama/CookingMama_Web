@@ -81,11 +81,17 @@ export default function ReviewDetail() {
                         </div>
                       </div>
                     </div>
-                    <div
-                      onClick={() => dispatch(setFalse())}
-                      className="text-4xl text-end mb-5 hover:cursor-pointer"
-                    >
-                      x
+                    <div className="flex">
+                      <div className=" flex items-center mr-7">
+                        {data.createdAt.split("T")[0]}{" "}
+                        {data.createdAt.split("T")[1].split(".")[0]}
+                      </div>
+                      <div
+                        onClick={() => dispatch(setFalse())}
+                        className="text-4xl text-end mb-5 hover:cursor-pointer"
+                      >
+                        x
+                      </div>
                     </div>
                   </div>
                 </div>
