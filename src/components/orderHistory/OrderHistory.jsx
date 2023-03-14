@@ -2,6 +2,9 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getOrder } from "../../store/orderHistory/orderHistorySlice";
+import { BsPencilSquare } from "react-icons/bs";
+import { setWriteTrue } from "../../store/reviews/reviewSlice";
+import ReviewWrite from "../reviews/ReviewWrite";
 
 const OrderHistory = () => {
   const { data } = useSelector((state) => state.orderHistory);
@@ -67,11 +70,12 @@ const OrderHistory = () => {
                         <th className="pl-2 pr-2">최종결제금액</th>
                         <th className="pl-2 pr-2">진행상태</th>
                         <th className="pl-2 pr-2">송장번호</th>
+                        <th className="pl-2 pr-2">리뷰 쓰기</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {data?.map((el) => (
-                        <tr>
+                      {data?.map((el, idx) => (
+                        <tr key={idx} className="items-center">
                           <td className="text-center">
                             {el.orderDate.split("T")[0]}
                           </td>
@@ -89,6 +93,18 @@ const OrderHistory = () => {
                             {el.status === 0 ? "미출고" : "배송중"}{" "}
                           </td>
                           <td className="text-center">{el.trackingNumber}</td>
+                          <ReviewWrite
+                            itemName={el.itemName}
+                            itemId={el.itemId}
+                          />
+                          <td
+                            onClick={() => {
+                              dispatch(setWriteTrue());
+                            }}
+                            className="flex justify-center text-xl text-center hover:cursor-pointer"
+                          >
+                            <BsPencilSquare />
+                          </td>
                         </tr>
                       ))}
                       <tr>

@@ -11,7 +11,6 @@ import OrderPageMyCoupons from "./OrderPageMyCoupons";
 import OrderPageTotal from "./OrderPageTotal";
 
 const OrderPage = () => {
-  const { data } = useSelector((state) => state.order);
 
   const dispatch = useDispatch();
 
@@ -35,6 +34,7 @@ const OrderPage = () => {
       itemPrice: 0,
       categoryName: "",
       itemCount: 0,
+      itemOption: "",
     },
   ]);
 

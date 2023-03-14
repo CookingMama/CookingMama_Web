@@ -48,6 +48,7 @@ export default function Login() {
                   <input
                     id="userEmail"
                     name="userEmail"
+                    type={"email"}
                     value={user.userEmail}
                     required
                     className="text-center relative block w-96 appearance-none rounded-none rounded-b-md rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"

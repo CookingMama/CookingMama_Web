@@ -69,6 +69,7 @@ const heartsSlice = createSlice({
       })
       .addCase(deleteItem.fulfilled, (state, action) => {
         state.status = "successed";
+        state.data = action.payload;
       })
       .addCase(deleteItem.rejected, (state, action) => {
         state.status = "failed";
