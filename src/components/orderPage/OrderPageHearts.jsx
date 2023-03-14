@@ -20,6 +20,7 @@ const OrderPageHearts = ({ orderPrice, setOrderPrice, setOrderItemInfo }) => {
       itemPrice: el.itemPrice,
       categoryName: el.categoryName,
       itemCount: el.count,
+      itemOption: el.itemOption,
     }));
     setOrderItemInfo(orderItemInfo);
   }, [data]);

@@ -27,14 +27,13 @@ const Hearts = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const updateList = hearts.map((el) => ({ count: el.count }));
+    const updateList = hearts.map((el) => ({
+      heartsId: el.heartsId,
+      count: el.count,
+    }));
+    console.log(updateList);
     dispatch(updateCount(updateList));
-    const sumCount = hearts.reduce(
-      (sum, currValue) => sum + currValue.count,
-      0
-    );
-    if (sumCount === 0) alert("주문할 수량이 없습니다.");
-    else if (sumCount !== 0) navigate("/orderpage");
+    navigate("/orderpage");
   };
 
   const onClickDelete = (e, id) => {
@@ -52,7 +51,6 @@ const Hearts = () => {
         : el
     );
     setHearts(updatePlus);
-   
   };
 
   const onClickMinus = (e, heartsId) => {
