@@ -7,8 +7,8 @@ const initialState = {
   error: null,
 };
 
-export const getOrder = createAsyncThunk("/ user/orders", async() => {
-    const response = await api("GET", "/user/orders");
+export const getOrder = createAsyncThunk("/orders", async() => {
+    const response = await api("GET", "/orders");
     return response.data;
 })
 

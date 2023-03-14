@@ -8,15 +8,15 @@ const initialState = {
   error: null,
 };
 
-export const getCoupons = createAsyncThunk("/user/coupons", async () => {
-  const response = await api("GET", "user/coupons");
+export const getCoupons = createAsyncThunk("/coupons", async () => {
+  const response = await api("GET", "/coupons");
   return response.data;
 });
 
 export const addCoupons = createAsyncThunk(
   "/user/coupons/post",
   async (couponCode) => {
-    const response = await api("POST", "user/coupons", couponCode);
+    const response = await api("POST", "/coupons", couponCode);
     alert(response.data);
     window.location.reload();
     return response.data;

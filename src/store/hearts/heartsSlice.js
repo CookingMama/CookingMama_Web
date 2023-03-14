@@ -15,9 +15,7 @@ export const getHearts = createAsyncThunk("/user/hearts", async () => {
 export const updateCount = createAsyncThunk(
   "/user/hearts/plus",
   async (request) => {
-    console.log(request);
     const response = await api("PUT", "/user/hearts", request);
-    console.log(response);
     return response.data;
   }
 );
@@ -84,7 +82,7 @@ const heartsSlice = createSlice({
       })
       .addCase(postHearts.rejected, (state, action) => {
         state.status = "failed";
-        state.error = action.error.message;  
+        state.error = action.error.message;
       });
   },
 });

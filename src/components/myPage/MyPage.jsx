@@ -1,11 +1,19 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { getCoupons } from "../../store/coupons/couponsSlice";
+import { getOrder } from "../../store/orderHistory/orderHistorySlice";
 import MyPageCoupons from "./MyPageCoupons";
 import MyPageOrderHistory from "./MyPageOrderHistory";
 
 const MyPage = () => {
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+      dispatch(getCoupons());
+      dispatch(getOrder());
+    }, []);
+    
   return (
     <>
       <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-sky-200">

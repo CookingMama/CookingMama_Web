@@ -9,6 +9,7 @@ import Coupons from "../components/coupons/Coupons";
 import MyPage from "../components/myPage/MyPage";
 import EditInfo from "../components/editInfo/EditInfo";
 import OrderHistory from "../components/orderHistory/OrderHistory";
+import OrderPage from "../components/orderPage/OrderPage";
 
 const CustomRoute = () => {
   return (
@@ -24,6 +25,7 @@ const CustomRoute = () => {
           <Route path="/coupons" element={<Coupons />} />
           <Route path="/editinfo" element={<EditInfo />} />
           <Route path="/orderhistory" element={<OrderHistory />} />
+          <Route path="/orderpage" element={<OrderPage/>} />
         </Route>
       </Routes>
     </BrowserRouter>
