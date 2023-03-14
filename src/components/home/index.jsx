@@ -59,7 +59,9 @@ const Home = () => {
           id="homeReview"
           className="w-10/12 min-w-12 rounded-xl bg-sky-200 shadow shadow-cyan-900"
         >
-          {data.bestReview !== undefined && data.reviews !== null ? (
+          {data.bestReview !== undefined &&
+          data.bestReview.itemId !== null &&
+          data.reviews !== null ? (
             <>
               <div className="text-4xl my-5 font-bold tracking-tight text-gray-900">
                 Reviews

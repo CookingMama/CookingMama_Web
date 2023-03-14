@@ -79,6 +79,7 @@ const heartsSlice = createSlice({
       })
       .addCase(postHearts.fulfilled, (state, action) => {
         state.status = "successed";
+        state.date = action.payload;
       })
       .addCase(postHearts.rejected, (state, action) => {
         state.status = "failed";

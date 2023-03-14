@@ -1,5 +1,6 @@
 import { BsStarFill, BsStar } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
+import { imagePath } from "../../api/api";
 import {
   setItemIds,
   setTrue,
@@ -31,7 +32,7 @@ const ItemDetailReview = (reviews) => {
           {el.itemId === itemId && el.userId === userId && <ReviewDetail />}
           <div className="flex">
             <div>
-              <img src={el.image} className="w-36 h-36" />
+              <img src={imagePath(el.image)} className="w-36 h-36" />
             </div>
             <div className="ml-3">
               <div>{el.userName}</div>

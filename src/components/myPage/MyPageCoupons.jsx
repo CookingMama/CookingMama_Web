@@ -16,7 +16,7 @@ const MyPageCoupons = () => {
             </tr>
           </thead>
           <tbody className="whitespace-nowrap text-center">
-            {data.map((el) => (
+            {data?.map((el) => (
               <tr key={el.id}>
                 <td className="pl-5 pr-5 pt-3">{el.couponName}</td>
                 <td className="pl-5 pr-5 pt-3">{el.couponPercentage}%</td>
@@ -28,7 +28,6 @@ const MyPageCoupons = () => {
           </tbody>
         </table>
       </div>
-      
     </div>
   );
 };

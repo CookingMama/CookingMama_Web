@@ -1,8 +1,15 @@
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getOrder } from "../../store/orderHistory/orderHistorySlice";
 
 const MyPageOrderHistory = () => {
   const { data } = useSelector((state) => state.orderHistory);
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(getOrder());
+  }, []);
+  console.log(data);
   return (
     <div className="flex flex-col justify-center bg-white p-2 rounded-lg m-3">
       <div className="rounded-md">
@@ -21,8 +28,8 @@ const MyPageOrderHistory = () => {
             </tr>
           </thead>
           <tbody>
-            {data?.map((el) => (
-              <tr>
+            {data?.map((el, idx) => (
+              <tr key={idx}>
                 <td className="text-center whitespace-nowrap pt-3">
                   {el.orderDate.split("T")[0]}
                 </td>

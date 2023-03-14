@@ -30,6 +30,7 @@ const OrderPage = () => {
 
   const [orderItemInfo, setOrderItemInfo] = useState([
     {
+      heartsId: 0,
       itemId: 0,
       itemPrice: 0,
       categoryName: "",
@@ -55,7 +56,7 @@ const OrderPage = () => {
     }));
     console.log(request);
     dispatch(addOrder(request));
-    // navigate("/mypage/orderhistory");
+    navigate("/orderhistory");
   };
 
   return (

@@ -15,9 +15,10 @@ const OrderPageHearts = ({ orderPrice, setOrderPrice, setOrderItemInfo }) => {
 
   useEffect(() => {
     const orderItemInfo = data?.map((el) => ({
+      heartsId: el.heartsId,
       itemId: el.itemId,
       itemPrice: el.itemPrice,
-      categoryName: "12345",
+      categoryName: el.categoryName,
       itemCount: el.count,
     }));
     setOrderItemInfo(orderItemInfo);
@@ -72,6 +73,8 @@ const OrderPageHearts = ({ orderPrice, setOrderPrice, setOrderItemInfo }) => {
       )
     );
   }, [hearts]);
+
+  console.log(data);
 
   return (
     <div className="rounded-md flex flex-col justify-center m-3">

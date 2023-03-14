@@ -13,7 +13,7 @@ const ReviewWrite = ({ itemName, itemId }) => {
   const [loaded, setLoaded] = useState(false);
   const [fileURL, setFileURL] = useState("");
   const [writeReview, setWriteReview] = useState({
-    itemId: 10,
+    itemId: 13,
     content: "",
     image: null,
     imageName: "",
@@ -58,8 +58,7 @@ const ReviewWrite = ({ itemName, itemId }) => {
     };
   };
 
-  const onSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = () => {
     dispatch(PostReview(writeReview));
   };
 
