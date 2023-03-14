@@ -82,7 +82,7 @@ const Coupons = () => {
                         </tr>
                       </thead>
                       <tbody className="whitespace-nowrap text-center">
-                        {data.map((el) => (
+                        {data?.map((el) => (
                           <tr key={el.id}>
                             <td className="pl-5 pr-5 pt-5 pb-5">
                               {el.couponName}
