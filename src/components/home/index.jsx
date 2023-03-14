@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getUserHome } from "../../store/main/userHomeSlice";
+import { setWriteTrue } from "../../store/reviews/reviewSlice";
+import ReviewWrite from "../reviews/ReviewWrite";
 import MainItem from "./MainItem";
 import MainReview from "./MainReview";
 
@@ -70,6 +72,15 @@ const Home = () => {
             </div>
           )}
         </div>
+        <ReviewWrite itemName={data.itemName} />
+        <button
+          className="w-100 h-100"
+          onClick={() => {
+            dispatch(setWriteTrue());
+          }}
+        >
+          여기야
+        </button>
       </div>
     </div>
   );

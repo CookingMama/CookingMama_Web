@@ -10,6 +10,7 @@ import MyPage from "../components/myPage/MyPage";
 import EditInfo from "../components/editInfo/EditInfo";
 import OrderHistory from "../components/orderHistory/OrderHistory";
 import ItemCategoryList from "../components/item/ItemCategoryList";
+import ReviewWrite from "../components/reviews/ReviewWrite";
 
 const CustomRoute = () => {
   return (
@@ -26,6 +27,7 @@ const CustomRoute = () => {
           <Route path="/editinfo" element={<EditInfo />} />
           <Route path="/orderhistory" element={<OrderHistory />} />
           <Route path="/items/:categoryId" element={<ItemCategoryList />} />
+          <Route path="/review/:itemId" element={<ReviewWrite />} />
         </Route>
       </Routes>
     </BrowserRouter>
