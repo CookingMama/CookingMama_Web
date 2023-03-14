@@ -65,6 +65,7 @@ const ReviewSlice = createSlice({
       })
       .addCase(PostReview.fulfilled, (state, action) => {
         state.status = "successed";
+        state.data = action.payload;
       })
       .addCase(PostReview.rejected, (state, action) => {
         state.status = "failed";
