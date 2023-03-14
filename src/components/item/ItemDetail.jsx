@@ -7,6 +7,7 @@ import { BsStarFill, BsStar, BsMusicNoteBeamed } from "react-icons/bs";
 import ItemDetailReview from "./ItemDetailReview";
 import ItemCheck from "./ItemCheck";
 import { postHearts } from "../../store/hearts/heartsSlice";
+import { Link } from "react-router-dom";
 
 export default function ItemDetail() {
   const [inputList, setInputList] = useState([]);
@@ -22,8 +23,7 @@ export default function ItemDetail() {
   const gradeIcons = (grade) => {
     const array = [];
     for (let i = 1; i <= 5; i++) {
-      if (i <= grade) array.push(<BsStarFill />);
-      else array.push(<BsStar />);
+      i <= grade ? array.push(<BsStarFill />) : array.push(<BsStar />);
     }
     return array;
   };
@@ -37,19 +37,17 @@ export default function ItemDetail() {
     setInputList([...inputList, input]);
   };
 
-  const onSubmit = () => {
-    if (localStorage.getItem("token")) {
-      dispatch(postHearts(inputList));
-      if (
-        window.confirm(
-          "장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?"
-        )
-      ) {
-        navigate("/hearts");
-      }
-    } else {
-      navigate("/login");
-    }
+  const onSubmit = (e) => {
+    localStorage.getItem("token")
+      ? inputList.length < 1
+        ? alert("옵션을 선택해주세요.")
+        : dispatch(
+            postHearts(inputList),
+            window.confirm(
+              "장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?"
+            ) && navigate("/hearts")
+          )
+      : navigate("/login");
   };
 
   return (
@@ -62,19 +60,12 @@ export default function ItemDetail() {
           >
             <li>
               <div className="flex items-center">
-                <a href="" className="mr-2 text-sm font-medium text-gray-900">
-                  category
-                </a>
-                <div
-                  width={16}
-                  height={20}
-                  viewBox="0 0 16 20"
-                  fill="currentColor"
-                  aria-hidden="true"
-                  className="h-5 w-4 text-gray-300"
+                <Link
+                  to={`/items/${data.categoryId}?category=${data.categoryName}`}
+                  className="mr-2 text-sm font-medium text-gray-900"
                 >
-                  <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
-                </div>
+                  {data.categoryName} &gt;
+                </Link>
               </div>
             </li>
             <li className="text-sm">
@@ -122,10 +113,7 @@ export default function ItemDetail() {
                     </div>
                   ))}
                 </div>
-                <a
-                  href="" // 리뷰 페이지로
-                  className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500"
-                >
+                <a className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">
                   {data.reviewCount} reviews
                 </a>
               </div>

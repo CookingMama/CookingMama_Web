@@ -5,8 +5,10 @@ import editInfoSlice from "./editInfo/editInfoSlice";
 import heartsSlice from "./hearts/heartsSlice";
 import userHomeSlice from "./main/userHomeSlice";
 import userSlice from "./user/userSlice";
+import reviewSlice from "./reviews/reviewSlice";
 import orderHistorySlice from "./orderHistory/orderHistorySlice";
 import orderSlice from "./order/orderSlice";
+import itemListCategorySlice from "./item/itemListCategorySlice";
 
 export default configureStore({
   reducer: {
@@ -16,7 +18,9 @@ export default configureStore({
     hearts: heartsSlice,
     coupons: couponsSlice,
     editInfo: editInfoSlice,
+    review: reviewSlice,
     orderHistory: orderHistorySlice,
     order: orderSlice,
+    itemListByCategory: itemListCategorySlice,
   },
 });

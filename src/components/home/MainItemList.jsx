@@ -5,7 +5,7 @@ const MainItemList = ({ id, name, image, adminName, price, reviewCount }) => {
   const navigate = useNavigate();
 
   const toItemDetail = () => {
-    navigate(`/items/${id}`);
+    navigate(`/itemdetail/${id}`);
   };
 
   return (
