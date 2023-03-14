@@ -1,6 +1,5 @@
-import { Fragment, useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getReviewDetail,
@@ -8,6 +7,7 @@ import {
   setTrue,
 } from "../../store/reviews/reviewSlice";
 import { BsStarFill, BsStar } from "react-icons/bs";
+import { imagePath } from "../../api/api";
 
 export default function ReviewDetail() {
   const { data, isOpen, itemId, userId } = useSelector((state) => state.review);
@@ -98,7 +98,12 @@ export default function ReviewDetail() {
                 </div>
                 <div className="">
                   <div className="mt-2 px-24 text-left h-3/5">
-                    <div className="text-xl w-4/5">{data.content}</div>
+                    <div>
+                      <img src={imagePath(data.image)} />
+                    </div>
+                    <pre className="whitespace-pre-wrap break-all overflow-auto text-gray-900 text-xl">
+                      {data.content}
+                    </pre>
                   </div>
                 </div>
 

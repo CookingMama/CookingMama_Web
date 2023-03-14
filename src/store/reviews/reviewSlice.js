@@ -1,9 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { api } from "../../api/api";
+import { api, apiReview } from "../../api/api";
 
 const initialState = {
   data: [],
   isOpen: false,
+  writeIsOpen: false,
   itemId: null,
   userId: null,
   status: "idle",
@@ -18,6 +19,11 @@ export const getReviewDetail = createAsyncThunk(
   }
 );
 
+export const PostReview = createAsyncThunk("review/post", async (inputData) => {
+  const data = await apiReview("post", "/review/write", inputData);
+  return data.data;
+});
+
 const ReviewSlice = createSlice({
   name: "review",
   initialState,
@@ -27,6 +33,12 @@ const ReviewSlice = createSlice({
     },
     setFalse: (state) => {
       state.isOpen = false;
+    },
+    setWriteTrue: (state) => {
+      state.writeIsOpen = true;
+    },
+    setWriteFalse: (state) => {
+      state.writeIsOpen = false;
     },
     setItemIds: (state, itemId) => {
       state.itemId = itemId.payload;
@@ -47,9 +59,25 @@ const ReviewSlice = createSlice({
       .addCase(getReviewDetail.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
+      })
+      .addCase(PostReview.pending, (state, action) => {
+        state.status = "loading";
+      })
+      .addCase(PostReview.fulfilled, (state, action) => {
+        state.status = "successed";
+      })
+      .addCase(PostReview.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
       });
   },
 });
-export const { setTrue, setFalse, setItemIds, setUserIds } =
-  ReviewSlice.actions;
+export const {
+  setTrue,
+  setFalse,
+  setItemIds,
+  setUserIds,
+  setWriteTrue,
+  setWriteFalse,
+} = ReviewSlice.actions;
 export default ReviewSlice.reducer;

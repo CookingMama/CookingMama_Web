@@ -1,3 +1,4 @@
+import { imagePath } from "../../api/api";
 import MainRecentReviewList from "./MainRecentReviewsList";
 
 const MainRecentReview = ({ reviews }) => {
@@ -11,7 +12,7 @@ const MainRecentReview = ({ reviews }) => {
           itemName={el.itemName}
           userName={el.userName}
           grade={el.grade}
-          image={el.image}
+          image={imagePath(el.image)}
           content={el.content}
         />
       ))}

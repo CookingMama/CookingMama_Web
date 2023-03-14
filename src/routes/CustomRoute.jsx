@@ -11,6 +11,7 @@ import EditInfo from "../components/editInfo/EditInfo";
 import OrderHistory from "../components/orderHistory/OrderHistory";
 import OrderPage from "../components/orderPage/OrderPage";
 import ItemCategoryList from "../components/item/ItemCategoryList";
+import ReviewWrite from "../components/reviews/ReviewWrite";
 
 const CustomRoute = () => {
   return (
@@ -28,6 +29,7 @@ const CustomRoute = () => {
           <Route path="/orderhistory" element={<OrderHistory />} />
           <Route path="/orderpage" element={<OrderPage/>} />
           <Route path="/items/:categoryId" element={<ItemCategoryList />} />
+          <Route path="/review/:itemId" element={<ReviewWrite />} />
         </Route>
       </Routes>
     </BrowserRouter>

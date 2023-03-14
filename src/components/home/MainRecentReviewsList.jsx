@@ -36,7 +36,7 @@ const MainRecentReviewList = ({
     <div className="flex flex-wrap my-5 justify-center">
       {myItemId === itemId && myUserId === userId && <ReviewDetail />}
       <div className="mx-5 w-40 min-w-10 min-h-10 bg-gray-200 group-hover:opacity-75 rounded">
-        <img src={image} alt={image} className="object-fill" />
+        <img src={image} alt={image} className="object-fill w-full h-full" />
       </div>
       <div className="flex flex-col max-w-10 min-w-12">
         <div

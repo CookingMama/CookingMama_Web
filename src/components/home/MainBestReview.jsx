@@ -6,6 +6,7 @@ import {
   setUserIds,
 } from "../../store/reviews/reviewSlice";
 import ReviewDetail from "../reviews/ReviewDetail";
+import { imagePath } from "../../api/api";
 
 const MainBestReview = ({ bestReview }) => {
   const { itemId, userId } = useSelector((state) => state.review);
@@ -33,9 +34,9 @@ const MainBestReview = ({ bestReview }) => {
       <div className="flex flex-wrap justify-center pb-28">
         <div className="mx-5 w-5/12 min-w-12 bg-gray-200 group-hover:opacity-75 rounded">
           <img
-            src={bestReview.image}
+            src={imagePath(bestReview.image)}
             alt={bestReview.image}
-            className="object-fill"
+            className="object-fill w-full h-full"
           />
         </div>
         <div className="flex flex-col w-5/12 min-w-12">
