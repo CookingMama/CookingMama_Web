@@ -12,6 +12,7 @@ import OrderHistory from "../components/orderHistory/OrderHistory";
 import OrderPage from "../components/orderPage/OrderPage";
 import ItemCategoryList from "../components/item/ItemCategoryList";
 import ReviewWrite from "../components/reviews/ReviewWrite";
+import Review from "../components/reviews/Review";
 
 const CustomRoute = () => {
   return (
@@ -27,7 +28,8 @@ const CustomRoute = () => {
           <Route path="/coupons" element={<Coupons />} />
           <Route path="/editinfo" element={<EditInfo />} />
           <Route path="/orderhistory" element={<OrderHistory />} />
-          <Route path="/orderpage" element={<OrderPage/>} />
+          <Route path="/reviews" element={<Review />} />
+          <Route path="/orderpage" element={<OrderPage />} />
           <Route path="/items/:categoryId" element={<ItemCategoryList />} />
           <Route path="/review/:itemId" element={<ReviewWrite />} />
         </Route>

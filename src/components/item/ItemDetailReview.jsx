@@ -9,7 +9,7 @@ import {
 import ReviewDetail from "../reviews/ReviewDetail";
 
 const ItemDetailReview = (reviews) => {
-  const { itemId, userId } = useSelector((state) => state.review);
+  const { itemId, userId } = useSelector((state) => state.review.detailReview);
   const dispatch = useDispatch();
   const gradeIcons = (grade) => {
     const array = [];

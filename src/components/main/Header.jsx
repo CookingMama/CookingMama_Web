@@ -176,7 +176,7 @@ export default function Header() {
           </a>
         </Popover.Group>
         {/* 로그인시 MyPage, Hearts, Logout */}
-        {data.token ? (
+        {localStorage.getItem("token") ? (
           <>
             <div className="hidden lg:flex lg:flex-1 lg:justify-end">
               <div className="mr-3">
@@ -306,7 +306,7 @@ export default function Header() {
               </div>
 
               {/* 로그인시 MyPage, Hearts, Logout */}
-              {data.token ? (
+              {localStorage.getItem("token") ? (
                 <>
                   <div className="py-6">
                     <Link

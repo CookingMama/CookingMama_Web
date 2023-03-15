@@ -74,15 +74,6 @@ const Home = () => {
             </div>
           )}
         </div>
-        <ReviewWrite itemName={data.itemName} />
-        <button
-          className="w-100 h-100"
-          onClick={() => {
-            dispatch(setWriteTrue());
-          }}
-        >
-          여기야
-        </button>
       </div>
     </div>
   );

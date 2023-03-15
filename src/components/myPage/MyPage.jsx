@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getCoupons } from "../../store/coupons/couponsSlice";
 import { getOrder } from "../../store/orderHistory/orderHistorySlice";
+import Review from "../reviews/Review";
 import MyPageCoupons from "./MyPageCoupons";
 import MyPageOrderHistory from "./MyPageOrderHistory";
 

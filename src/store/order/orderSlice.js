@@ -7,7 +7,7 @@ const initialState = {
   error: null,
 };
 
-export const addOrder = createAsyncThunk("/orders", async (request) => {
+export const addOrder = createAsyncThunk("/addorders", async (request) => {
   const response = await api("POST", "/orders", request);
   return response.data;
 });
@@ -22,7 +22,6 @@ const orderSlice = createSlice({
       })
       .addCase(addOrder.fulfilled, (state, action) => {
         state.status = "successed";
-        state.data = action.payload;
       })
       .addCase(addOrder.rejected, (state, action) => {
         state.status = "failed";

@@ -31,6 +31,7 @@ const userSlice = createSlice({
       })
       .addCase(login.fulfilled, (state, action) => {
         state.status = "successed";
+        console.log(action.payload);
         state.data = action.payload;
         localStorage.setItem("token", action.payload.token);
       })

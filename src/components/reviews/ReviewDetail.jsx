@@ -10,7 +10,9 @@ import { BsStarFill, BsStar } from "react-icons/bs";
 import { imagePath } from "../../api/api";
 
 export default function ReviewDetail() {
-  const { data, isOpen, itemId, userId } = useSelector((state) => state.review);
+  const { data, isOpen, itemId, userId } = useSelector(
+    (state) => state.review.detailReview
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {

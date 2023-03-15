@@ -8,21 +8,30 @@ import {
   setWriteTrue,
 } from "../../store/reviews/reviewSlice";
 import ImgUpload from "../image/ImgUpload";
+import { useNavigate } from "react-router-dom";
 
 const ReviewWrite = ({ itemName, itemId }) => {
   const [loaded, setLoaded] = useState(false);
   const [fileURL, setFileURL] = useState("");
   const [writeReview, setWriteReview] = useState({
-    itemId: 13,
+    itemId: 0,
     content: "",
     image: null,
     imageName: "",
     grade: 0,
   });
-  const { writeIsOpen, error, status } = useSelector((state) => state.review);
+
+  const { writeIsOpen, error, status } = useSelector(
+    (state) => state.review.detailReview
+  );
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const cancelButtonRef = useRef(null);
+
+  useEffect(() => {
+    setWriteReview({ ...writeReview, itemId: itemId });
+  }, [itemId]);
 
   const gradeIcons = (grade) => {
     const array = [];
@@ -58,8 +67,16 @@ const ReviewWrite = ({ itemName, itemId }) => {
     };
   };
 
-  const onSubmit = () => {
-    dispatch(PostReview(writeReview));
+  const onSubmit = (e) => {
+    e.preventDefault();
+    try {
+      dispatch(PostReview(writeReview));
+      if (window.confirm("리뷰가 등록되었습니다! 확인하시겠습니까?")) {
+        navigate(`/itemdetail/${itemId}`);
+      }
+    } catch {
+      alert(error);
+    }
   };
 
   return (
@@ -111,7 +128,7 @@ const ReviewWrite = ({ itemName, itemId }) => {
                         as="h3"
                         className="text-3xl font-semibold leading-6 text-gray-900"
                       >
-                        "itemName"에 대한 별점을 남겨주세요!!!
+                        {itemName}에 대한 별점을 남겨주세요!!!
                       </div>
                       <div className="flex justify-center relative bottom-0">
                         {gradeIcons(writeReview.grade).map((el, idx) => (

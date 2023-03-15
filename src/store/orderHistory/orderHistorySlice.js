@@ -7,28 +7,28 @@ const initialState = {
   error: null,
 };
 
-export const getOrder = createAsyncThunk("/orders", async() => {
-    const response = await api("GET", "/orders");
-    return response.data;
-})
+export const getOrder = createAsyncThunk("/orders", async () => {
+  const response = await api("GET", "/orders");
+  return response.data;
+});
 
 const orderHistorySlice = createSlice({
-    name: "orderHistory",
-    initialState,
-    extraReducers(builder) {
-        builder
-        .addCase(getOrder.pending, (state, action) => {
-          state.status = "loading";
-        })
-        .addCase(getOrder.fulfilled, (state, action) => {
-          state.status = "successed";
-          state.data = action.payload;
-        })
-        .addCase(getOrder.rejected, (state, action) => {
-          state.status = "failed";
-          state.error = action.error.message;
-        });
-    }
+  name: "orderHistory",
+  initialState,
+  extraReducers(builder) {
+    builder
+      .addCase(getOrder.pending, (state, action) => {
+        state.status = "loading";
+      })
+      .addCase(getOrder.fulfilled, (state, action) => {
+        state.status = "successed";
+        state.data = action.payload;
+      })
+      .addCase(getOrder.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      });
+  },
 });
 
 export default orderHistorySlice.reducer;

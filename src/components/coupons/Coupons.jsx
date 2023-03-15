@@ -10,7 +10,6 @@ const Coupons = () => {
 
   useEffect(() => {
     dispatch(getCoupons());
-    console.log(data);
   }, []);
 
   const [coupon, setCoupon] = useState({
@@ -82,14 +81,12 @@ const Coupons = () => {
                         </tr>
                       </thead>
                       <tbody className="whitespace-nowrap text-center">
-                        {data?.map((el) => (
-                          <tr key={el.id}>
+                        {data?.map((el, idx) => (
+                          <tr key={idx}>
                             <td className="pl-5 pr-5 pt-5 pb-5">
                               {el.couponName}
                             </td>
-                            <td className="pl-5 pr-5">
-                              {el.couponPercentage}
-                            </td>
+                            <td className="pl-5 pr-5">{el.couponPercentage}</td>
                             <td className="pl-5 pr-5">
                               {el.status === 0 ? "미사용" : "사용 완료"}
                             </td>

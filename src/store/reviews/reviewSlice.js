@@ -2,13 +2,20 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { api, apiReview } from "../../api/api";
 
 const initialState = {
-  data: [],
-  isOpen: false,
-  writeIsOpen: false,
-  itemId: null,
-  userId: null,
-  status: "idle",
-  error: null,
+  detailReview: {
+    data: [],
+    isOpen: false,
+    writeIsOpen: false,
+    itemId: null,
+    userId: null,
+    status: "idle",
+    error: null,
+  },
+  myReview: {
+    data: [],
+    status: "idle",
+    error: null,
+  },
 };
 
 export const getReviewDetail = createAsyncThunk(
@@ -18,6 +25,10 @@ export const getReviewDetail = createAsyncThunk(
     return data.data;
   }
 );
+export const getMyReview = createAsyncThunk("myReview/get", async () => {
+  const data = await api("get", "/user/myreview");
+  return data.data;
+});
 
 export const PostReview = createAsyncThunk("review/post", async (inputData) => {
   const data = await apiReview("post", "/review/write", inputData);
@@ -29,47 +40,58 @@ const ReviewSlice = createSlice({
   initialState,
   reducers: {
     setTrue: (state) => {
-      state.isOpen = true;
+      state.detailReview.isOpen = true;
     },
     setFalse: (state) => {
-      state.isOpen = false;
+      state.detailReview.isOpen = false;
     },
     setWriteTrue: (state) => {
-      state.writeIsOpen = true;
+      state.detailReview.writeIsOpen = true;
     },
     setWriteFalse: (state) => {
-      state.writeIsOpen = false;
+      state.detailReview.writeIsOpen = false;
     },
     setItemIds: (state, itemId) => {
-      state.itemId = itemId.payload;
+      state.detailReview.itemId = itemId.payload;
     },
     setUserIds: (state, userId) => {
-      state.userId = userId.payload;
+      state.detailReview.userId = userId.payload;
     },
   },
   extraReducers(bulider) {
     bulider
       .addCase(getReviewDetail.pending, (state, action) => {
-        state.status = "loading";
+        state.detailReview.status = "loading";
       })
       .addCase(getReviewDetail.fulfilled, (state, action) => {
-        state.status = "successed";
-        state.data = action.payload;
+        state.detailReview.status = "successed";
+        state.detailReview.data = action.payload;
       })
       .addCase(getReviewDetail.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.error.message;
+        state.detailReview.status = "failed";
+        state.detailReview.error = action.error.message;
       })
       .addCase(PostReview.pending, (state, action) => {
-        state.status = "loading";
+        state.detailReview.status = "loading";
       })
       .addCase(PostReview.fulfilled, (state, action) => {
-        state.status = "successed";
-        state.data = action.payload;
+        state.detailReview.status = "successed";
+        state.detailReview.data = [...state.detailReview.data, action.payload];
       })
       .addCase(PostReview.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.error.message;
+        state.detailReview.status = "failed";
+        state.detailReview.error = action.error.message;
+      })
+      .addCase(getMyReview.pending, (state, action) => {
+        state.myReview.status = "loading";
+      })
+      .addCase(getMyReview.fulfilled, (state, action) => {
+        state.myReview.status = "successed";
+        state.myReview.data = action.payload;
+      })
+      .addCase(getMyReview.rejected, (state, action) => {
+        state.myReview.status = "failed";
+        state.myReview.error = action.error.message;
       });
   },
 });

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getOrder } from "../../store/orderHistory/orderHistorySlice";
@@ -7,18 +7,26 @@ import { setWriteTrue } from "../../store/reviews/reviewSlice";
 import ReviewWrite from "../reviews/ReviewWrite";
 
 const OrderHistory = () => {
-  const { data } = useSelector((state) => state.orderHistory);
+  const [toReview, setToReview] = useState({
+    itemId: 0,
+    itemName: "",
+  });
+  const { data, status } = useSelector((state) => state.orderHistory);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getOrder());
-    console.log(data);
   }, []);
 
+  const forReview = (itemId, itemName) => {
+    setToReview({ itemId: itemId, itemName: itemName });
+    dispatch(setWriteTrue());
+  };
   return (
     <>
       <div className="flex min-h-full items-center justify-center py-12 bg-sky-200">
+        <ReviewWrite itemName={toReview?.itemName} itemId={toReview?.itemId} />
         <div className="bg-white w-11/12 p-3 rounded-t-md rounded-b-md">
           <h1 className="flex justify-center text-4xl mt-0 mb-5">주문내역</h1>
           <div className="bg-sky-200 float-left rounded-lg white w-3/12 pb-12">
@@ -74,39 +82,34 @@ const OrderHistory = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {data?.map((el, idx) => (
-                        <tr key={idx} className="items-center">
-                          <td className="text-center">
-                            {el.orderDate.split("T")[0]}
-                          </td>
-                          <td className="text-center">{el.orderNumber}</td>
-                          <td className="text-center">{el.itemName}</td>
-                          <td className="text-center">{el.itemOption}</td>
-                          <td className="text-center">{el.itemCount}</td>
-                          <td className="text-center">
-                            {el.itemTotalPrice
-                              .toString()
-                              .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                            원
-                          </td>
-                          <td className="text-center">
-                            {el.status === 0 ? "미출고" : "배송중"}{" "}
-                          </td>
-                          <td className="text-center">{el.trackingNumber}</td>
-                          <ReviewWrite
-                            itemName={el.itemName}
-                            itemId={el.itemId}
-                          />
-                          <td
-                            onClick={() => {
-                              dispatch(setWriteTrue());
-                            }}
-                            className="flex justify-center text-xl text-center hover:cursor-pointer"
-                          >
-                            <BsPencilSquare />
-                          </td>
-                        </tr>
-                      ))}
+                      {status === "successed" &&
+                        data?.map((el, idx) => (
+                          <tr key={idx} className="items-center">
+                            <td className="text-center">
+                              {el.orderDate.split("T")[0]}
+                            </td>
+                            <td className="text-center">{el.orderNumber}</td>
+                            <td className="text-center">{el.itemName}</td>
+                            <td className="text-center">{el.itemOption}</td>
+                            <td className="text-center">{el.itemCount}</td>
+                            <td className="text-center">
+                              {el.itemTotalPrice
+                                .toString()
+                                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                              원
+                            </td>
+                            <td className="text-center">
+                              {el.status === 0 ? "미출고" : "배송중"}{" "}
+                            </td>
+                            <td className="text-center">{el.trackingNumber}</td>
+                            <td
+                              onClick={() => forReview(el.itemId, el.itemName)}
+                              className="flex justify-center text-xl text-center hover:cursor-pointer"
+                            >
+                              <BsPencilSquare />
+                            </td>
+                          </tr>
+                        ))}
                       <tr>
                         <td></td>
                       </tr>

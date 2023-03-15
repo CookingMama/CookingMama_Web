@@ -9,7 +9,6 @@ const MyPageOrderHistory = () => {
   useEffect(() => {
     dispatch(getOrder());
   }, []);
-  console.log(data);
   return (
     <div className="flex flex-col justify-center bg-white p-2 rounded-lg m-3">
       <div className="rounded-md">
