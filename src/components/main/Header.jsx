@@ -64,8 +64,6 @@ function classNames(...classes) {
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const { data, error, status } = useSelector((state) => state.user);
-
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -81,14 +79,10 @@ export default function Header() {
         className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
         aria-label="Global"
       >
-        <div className="flex lg:flex-1">
-          <Link to="/" className="-m-1.5 p-1.5">
+        <div className="flex items-center w-20 h-20 mr-10">
+          <Link to="/">
             <span className="sr-only">Your Company</span>
-            <img
-              className="h-8 w-auto"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-              alt=""
-            />
+            <img className="object-fill" src="\img\PngItem_2856883.png" />
           </Link>
         </div>
         <div className="flex lg:hidden">
